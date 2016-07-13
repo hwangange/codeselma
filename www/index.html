@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <allow-navigation href="https://code.jquery.com" />
+        <allow-navigation href="https://use.fortawesome.com" />
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline'; img-src 'self';
+              script-src 'self' https://code.jquery.com; style-src 'self'"> -->
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        
+
+        
+
+      <!--  <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" /> 
+        <script src="js/jquery-3.0.0.min.js"></script> 
+        <script src="js/jquery.mobile-1.4.5.min.js"></script> -->
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" href="css/themes/codeselma.css" />
+        <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+        <script src="https://use.fortawesome.com/be3c26cf.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+
+        <title>CodeSelma</title>
+        <script>
+       /*     $(function(){
+                $( "[data-role='header'], [data-role='footer']" ).toolbar({ theme: "a" });                
+            });
+
+            $(document).on("pagecontainerload",function(event,data){
+              alert("pageload event fired!\nURL: " + data.url);
+            });
+
+            $(document).on("pagebeforeshow","#home",function(){ 
+              $("#backButton").css("display","none");
+            });
+            $(document).on("pagebeforeshow","#candidates",function(){ 
+              $("#backButton").css("display","inline");
+            });
+            $(document).on("pagebeforeshow","#profile",function(){ 
+              $("#backButton").css("display","inline");
+            }); */
+
+            $(document).bind('mobileinit',function(){
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
+            });
+
+
+
+            $("#select-location").bind( "change", function(event, ui) {
+              var optionSelected = $("option:selected", this);
+                var valueSelected = this.value;
+                alert(valueSelected);
+            });
+
+
+        </script>
+    </head>
+    <body class = "ui-mobile-viewport" id = "deviceready">
+        
+        <div data-role="page" id="home" data-theme = "a" data-title = "Home">
+          <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed">
+              <h1 class = "header-blue">CODESELMA</h1>
+          </div>
+          <div data-role="main" class="ui-content">
+            
+                <div data-role = "fieldcontain">
+                    <label for = "select-location" class = "select" style = "color: white">Closest Voting Locations</label>
+                    <select name = "select-location" id = "select-location" data-native-menu="false">
+                        <option value = "harris">Harris County</option>
+                        <option value = "fort_bend">Fort Bend County</option>
+                    </select>
+                </div>
+           
+            <ul data-role = "listview" data-inset = "true">
+                <li><a href = "#"><h2>Clements High School</h2><p>4200 Elkins Dr SUGAR LAND, TX 77479</p><p><strong>0.74 miles</strong></p></a></li>
+                <li><a href = "#"><h2>First Colony Conference Center</h2><p>4200 Elkins Dr SUGAR LAND, TX 77479</p><p><strong>0.74 miles</strong></p></a></li>
+                <li><a href = "#"><h2>Sugar Land City Hall</h2><p>4200 Elkins Dr SUGAR LAND, TX 77479</p><p><strong>0.74 miles</strong></p></a></li>
+            </ul>
+          </div>
+          <div data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a"> 
+            <div data-role = "navbar">
+                <ul>
+                    <li><a href = "#home" data-icon = "home" class="ui-btn-active ui-state-persist">Home</a></li>
+                    <li><a href = "#candidates" data-icon = "comment">Candidates</a></li>
+                    <li><a href = "#" data-icon = "action">Share</a></li>
+                </ul>
+            </div>
+            <h1>Powered by FuzionApps</h1>
+           </div>
+
+        </div>
+
+
+        <div data-role="page" id="candidates" data-theme = "a" data-title = "Candidates">
+          <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed" >
+            <a href = "#home" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext" style = "height: 16px; width: 16px"></a>
+            <h1 class = "header-blue">CODESELMA</h1>
+          </div>
+          <div data-role="main" class="ui-content">
+            <h1 style = "color: white">Candidates</h1>
+            <ul data-role = "listview" data-inset = "true">
+                <li><a href = "#profile"><h2>Sarah DeMerchant</h2><p>D - Texas State Representative District 26</p></a></li>
+            </ul>
+          </div>
+          <div data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a"> 
+            <div data-role = "navbar">
+                <ul>
+                    <li><a href = "#home" data-icon = "home">Home</a></li>
+                    <li><a href = "#candidates" data-icon = "comment" class="ui-btn-active ui-state-persist">Candidates</a></li>
+                    <li><a href = "#" data-icon = "action">Share</a></li>
+                </ul>
+            </div>
+            <h1>Powered by FuzionApps</h1>
+           </div>
+
+        </div>
+
+        <div data-role="page" id="profile" data-theme = "a" data-title = "Profile">
+          <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed">
+            <a href = "#candidates" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext" style = "height: 16px; width: 16px"></a> <!-- data-rel = "back"-->
+            <h1 class = "header-blue">CODESELMA</h1>
+          </div>
+          <div data-role="main" class="ui-content">
+            <h1 style = "color: white">Sarah DeMerchant</h1>
+            <img src = "img/sarah_demerchant.png" style = "display: block; margin-left: auto; margin-right: auto; max-width: 100%">
+            
+            <a href = "http://www.sarahdemerchant.com/"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-video">Message (video)</button></a>
+            <a href = "http://www.sarahdemerchant.com/"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-navigation">Website</button></a>
+            <a href = "http://www.sarahdemerchant.com/"> <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-facebook">Facebook</button></a>
+            <a href = "http://www.sarahdemerchant.com/"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-twitter">Twitter</button></a>
+           
+          </div>
+          <div data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a"> 
+            <h1>Powered by FuzionApps</h1>
+          </div>
+
+        </div>
+
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
