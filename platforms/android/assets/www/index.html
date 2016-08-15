@@ -52,7 +52,7 @@
 
         <title>CodeSelma</title>
         <script>
-            $(function(){
+       /*     $(function(){
                 $( "[data-role='header'], [data-role='footer']" ).toolbar({ theme: "a" });                
             });
 
@@ -60,94 +60,113 @@
               alert("pageload event fired!\nURL: " + data.url);
             });
 
-            $(document).on("pagebeforeshow","#home",function(){ // When entering pagetwo
+            $(document).on("pagebeforeshow","#home",function(){ 
               $("#backButton").css("display","none");
             });
-            $(document).on("pagebeforeshow","#candidates",function(){ // When entering pagetwo
+            $(document).on("pagebeforeshow","#candidates",function(){ 
               $("#backButton").css("display","inline");
             });
-            $(document).on("pagebeforeshow","#profile",function(){ // When entering pagetwo
+            $(document).on("pagebeforeshow","#profile",function(){ 
               $("#backButton").css("display","inline");
+            }); */
+
+            $(document).bind('mobileinit',function(){
+                $.mobile.selectmenu.prototype.options.nativeMenu = false;
             });
 
-          /*  $( "#home" ).pagecontainer({
-              beforechange: function( event, ui ) {
-                alert($.mobile.activePage.attr('id'));
-                $idPage = $.mobile.activePage.attr('id');
-                if($idPage == "home") {
-                    $("#backButton").css("display","none");
 
-                }
 
-                else {
-                    $("#backButton").css("display","inline");
-                }
-              }
-            });*/
-
+            $("#select-location").bind( "change", function(event, ui) {
+              var optionSelected = $("option:selected", this);
+                var valueSelected = this.value;
+                alert(valueSelected);
+            });
 
 
         </script>
     </head>
     <body class = "ui-mobile-viewport" id = "deviceready">
-        <div data-role="header" data-backbtn="true">
-            <a data-rel = "back" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext" style = "height: 16px; width: 16px"></a>
-            <h1>CODESELMA</h1>
-        </div>
         
         <div data-role="page" id="home" data-theme = "a" data-title = "Home">
+          <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed">
+              <h1 class = "header-blue">CODESELMA</h1>
+          </div>
           <div data-role="main" class="ui-content">
-            <form>
-                <div class = "ui-field-contain">
-                    <label for = "select-location" style = "color: white">Closest Voting Locations</label>
-                    <select name = "select-location" id = "select-location">
-                        <option value = "1">Harris County</option>
-                        <option value = "2" selected = "selected">Fort Bend County</option>
+            
+                <div data-role = "fieldcontain">
+                    <label for = "select-location" class = "select" style = "color: white">Closest Voting Locations</label>
+                    <select name = "select-location" id = "select-location" data-native-menu="false">
+                        <option value = "harris">Harris County</option>
+                        <option value = "fort_bend">Fort Bend County</option>
                     </select>
                 </div>
-            </form>
+           
             <ul data-role = "listview" data-inset = "true">
                 <li><a href = "#"><h2>Clements High School</h2><p>4200 Elkins Dr SUGAR LAND, TX 77479</p><p><strong>0.74 miles</strong></p></a></li>
                 <li><a href = "#"><h2>First Colony Conference Center</h2><p>4200 Elkins Dr SUGAR LAND, TX 77479</p><p><strong>0.74 miles</strong></p></a></li>
                 <li><a href = "#"><h2>Sugar Land City Hall</h2><p>4200 Elkins Dr SUGAR LAND, TX 77479</p><p><strong>0.74 miles</strong></p></a></li>
             </ul>
           </div>
+          <div data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a"> 
+            <div data-role = "navbar">
+                <ul>
+                    <li><a href = "#home" data-icon = "home" class="ui-btn-active ui-state-persist">Home</a></li>
+                    <li><a href = "#candidates" data-icon = "comment">Candidates</a></li>
+                    <li><a href = "#" data-icon = "action">Share</a></li>
+                </ul>
+            </div>
+            <h1>Powered by FuzionApps</h1>
+           </div>
+
         </div>
 
 
         <div data-role="page" id="candidates" data-theme = "a" data-title = "Candidates">
+          <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed" >
+            <a href = "#home" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext" style = "height: 16px; width: 16px"></a>
+            <h1 class = "header-blue">CODESELMA</h1>
+          </div>
           <div data-role="main" class="ui-content">
             <h1 style = "color: white">Candidates</h1>
             <ul data-role = "listview" data-inset = "true">
                 <li><a href = "#profile"><h2>Sarah DeMerchant</h2><p>D - Texas State Representative District 26</p></a></li>
             </ul>
           </div>
+          <div data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a"> 
+            <div data-role = "navbar">
+                <ul>
+                    <li><a href = "#home" data-icon = "home">Home</a></li>
+                    <li><a href = "#candidates" data-icon = "comment" class="ui-btn-active ui-state-persist">Candidates</a></li>
+                    <li><a href = "#" data-icon = "action">Share</a></li>
+                </ul>
+            </div>
+            <h1>Powered by FuzionApps</h1>
+           </div>
+
         </div>
 
         <div data-role="page" id="profile" data-theme = "a" data-title = "Profile">
+          <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed">
+            <a href = "#candidates" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext" style = "height: 16px; width: 16px"></a> <!-- data-rel = "back"-->
+            <h1 class = "header-blue">CODESELMA</h1>
+          </div>
           <div data-role="main" class="ui-content">
             <h1 style = "color: white">Sarah DeMerchant</h1>
             <img src = "img/sarah_demerchant.png" style = "display: block; margin-left: auto; margin-right: auto; max-width: 100%">
             
-            <a href = "http://facebook.com"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-video">Message (video)</button></a>
-            <a href = "http://facebook.com"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-navigation">Website</button></a>
-            <a href = "http://facebook.com"> <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-facebook">Facebook</button></a>
-            <a href = "http://facebook.com"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Twitter</button></a>
+            <a href = "http://www.sarahdemerchant.com/"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-video">Message (video)</button></a>
+            <a href = "http://www.sarahdemerchant.com/"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-navigation">Website</button></a>
+            <a href = "http://www.sarahdemerchant.com/"> <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-facebook">Facebook</button></a>
+            <a href = "http://www.sarahdemerchant.com/"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-twitter">Twitter</button></a>
            
           </div>
-        </div>
-
-        <div data-role="footer"> <!-- data-position = "fixed" -->
-            <div data-role = "navbar">
-                <ul>
-                    <li><a href = "#home" data-icon = "home">Home</a></li>
-                    <li><a href = "#candidates" data-icon = "comment">Candidates</a></li>
-                    <li><a href = "#home" data-icon = "action">Share</a></li>
-                </ul>
-            </div>
+          <div data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a"> 
             <h1>Powered by FuzionApps</h1>
+          </div>
+
         </div>
 
+        
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>

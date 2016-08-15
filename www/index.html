@@ -21,8 +21,6 @@
     <head>
         <allow-navigation href="https://code.jquery.com" />
         <allow-navigation href="https://use.fortawesome.com" />
-        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline'; img-src 'self';
-              script-src 'self' https://code.jquery.com; style-src 'self'"> -->
         <!--
         Customize this policy to fit your own app's needs. For more guidance, see:
             https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
@@ -32,142 +30,451 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
+<!--         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+ -->
+        <meta http-equiv="Content-Security-Policy" 
+            content="default-src *; style-src 'self' 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+        <allow-navigation href="http://192.185.4.25/~laquitta/" />
+
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        
 
-        
-
-      <!--  <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.5.min.css" /> 
-        <script src="js/jquery-3.0.0.min.js"></script> 
-        <script src="js/jquery.mobile-1.4.5.min.js"></script> -->
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-        <link rel="stylesheet" href="css/themes/codeselma.css" />
+        <link rel="stylesheet" href="css/themes/codeselma.css" /> 
         <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
         <script src="https://use.fortawesome.com/be3c26cf.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-
+      <!--  <link rel="stylesheet" type="text/css" href="css/index.css"> --> <!-- messes up header font, button overflows-->
+        <link rel="stylesheet" type="text/css" href="css/original_index.css">
+       <!-- <link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.4.5.min.css"> -->
         <title>CodeSelma</title>
-        <script>
-       /*     $(function(){
-                $( "[data-role='header'], [data-role='footer']" ).toolbar({ theme: "a" });                
-            });
-
-            $(document).on("pagecontainerload",function(event,data){
-              alert("pageload event fired!\nURL: " + data.url);
-            });
-
-            $(document).on("pagebeforeshow","#home",function(){ 
-              $("#backButton").css("display","none");
-            });
-            $(document).on("pagebeforeshow","#candidates",function(){ 
-              $("#backButton").css("display","inline");
-            });
-            $(document).on("pagebeforeshow","#profile",function(){ 
-              $("#backButton").css("display","inline");
-            }); */
-
-            $(document).bind('mobileinit',function(){
-                $.mobile.selectmenu.prototype.options.nativeMenu = false;
-            });
-
-
-
-            $("#select-location").bind( "change", function(event, ui) {
-              var optionSelected = $("option:selected", this);
-                var valueSelected = this.value;
-                alert(valueSelected);
-            });
-
-
-        </script>
     </head>
     <body class = "ui-mobile-viewport" id = "deviceready">
-        
-        <div data-role="page" id="home" data-theme = "a" data-title = "Home">
-          <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed">
-              <h1 class = "header-blue">CODESELMA</h1>
-          </div>
-          <div data-role="main" class="ui-content">
+       <!-- <div class="voteapp"> -->
             
-                <div data-role = "fieldcontain">
-                    <label for = "select-location" class = "select" style = "color: white">Closest Voting Locations</label>
-                    <select name = "select-location" id = "select-location" data-native-menu="false">
-                        <option value = "harris">Harris County</option>
-                        <option value = "fort_bend">Fort Bend County</option>
-                    </select>
+
+<!-- pageone-->
+
+
+            <div data-role="page" id="pageone" data-theme = "a">
+            
+               <!-- <div class="header" data-role = "header" data-theme = "a" data-id = "header1" data-position = "fixed">
+                    <div class="backbtn">
+                        <button class="headerbtn" id="index" data-current-page="pageone" data-page="pageuserinfo">
+                            My Info
+                        </button>
+                     </div>
+                    <h1 class = "header-blue">CodeSelma</h1>
+                </div> -->
+
+                <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed">
+                    <a href = "#pageuserinfo" data-icon = "user" data-theme = "b">My Info</a>
+                    <h1 class = "header-blue">CODESELMA</h1>
                 </div>
-           
-            <ul data-role = "listview" data-inset = "true">
-                <li><a href = "#"><h2>Clements High School</h2><p>4200 Elkins Dr SUGAR LAND, TX 77479</p><p><strong>0.74 miles</strong></p></a></li>
-                <li><a href = "#"><h2>First Colony Conference Center</h2><p>4200 Elkins Dr SUGAR LAND, TX 77479</p><p><strong>0.74 miles</strong></p></a></li>
-                <li><a href = "#"><h2>Sugar Land City Hall</h2><p>4200 Elkins Dr SUGAR LAND, TX 77479</p><p><strong>0.74 miles</strong></p></a></li>
-            </ul>
-          </div>
-          <div data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a"> 
-            <div data-role = "navbar">
-                <ul>
-                    <li><a href = "#home" data-icon = "home" class="ui-btn-active ui-state-persist">Home</a></li>
-                    <li><a href = "#candidates" data-icon = "comment">Candidates</a></li>
-                    <li><a href = "#" data-icon = "action">Share</a></li>
-                </ul>
-            </div>
-            <h1>Powered by FuzionApps</h1>
-           </div>
-
-        </div>
 
 
-        <div data-role="page" id="candidates" data-theme = "a" data-title = "Candidates">
-          <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed" >
-            <a href = "#home" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext" style = "height: 16px; width: 16px"></a>
-            <h1 class = "header-blue">CODESELMA</h1>
-          </div>
-          <div data-role="main" class="ui-content">
-            <h1 style = "color: white">Candidates</h1>
-            <ul data-role = "listview" data-inset = "true">
-                <li><a href = "#profile"><h2>Sarah DeMerchant</h2><p>D - Texas State Representative District 26</p></a></li>
-            </ul>
-          </div>
-          <div data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a"> 
-            <div data-role = "navbar">
-                <ul>
-                    <li><a href = "#home" data-icon = "home">Home</a></li>
-                    <li><a href = "#candidates" data-icon = "comment" class="ui-btn-active ui-state-persist">Candidates</a></li>
-                    <li><a href = "#" data-icon = "action">Share</a></li>
-                </ul>
-            </div>
-            <h1>Powered by FuzionApps</h1>
-           </div>
+                 <div data-role = "main" class = "ui-content">
+                    <input id="lat" type="hidden" ></input>
+                    <input id="long" type="hidden" ></input>
+                   
+                    <!--<h2>Closest Voting Locations</h2>
+                    <div class="menu">
+                        <button id="county" class="navbtn" data-current-page="pageone" data-page="pagecounty">
+                            <img src="img/icon-arrow-down-wh-32.png" alt="">
+                            Harris County
+                        </button>
+                    </div> -->
 
-        </div>
+                    <!-- Hard coded, change later -->
+                    <div data-role = "fieldcontain">
+                        <label for = "select-location" class = "select" style = "color: white">Closest Voting Locations</label>
+                        <select name = "select-location" id = "county" data-native-menu="false">
+                            <option value = "harris">Harris County</option>
+                            <option value = "fort_bend">Fort Bend County</option> 
+                        </select>
+                    </div>
 
-        <div data-role="page" id="profile" data-theme = "a" data-title = "Profile">
-          <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed">
-            <a href = "#candidates" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext" style = "height: 16px; width: 16px"></a> <!-- data-rel = "back"-->
-            <h1 class = "header-blue">CODESELMA</h1>
-          </div>
-          <div data-role="main" class="ui-content">
-            <h1 style = "color: white">Sarah DeMerchant</h1>
-            <img src = "img/sarah_demerchant.png" style = "display: block; margin-left: auto; margin-right: auto; max-width: 100%">
-            
-            <a href = "http://www.sarahdemerchant.com/"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-video">Message (video)</button></a>
-            <a href = "http://www.sarahdemerchant.com/"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-navigation">Website</button></a>
-            <a href = "http://www.sarahdemerchant.com/"> <button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-facebook">Facebook</button></a>
-            <a href = "http://www.sarahdemerchant.com/"><button class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-twitter">Twitter</button></a>
-           
-          </div>
-          <div data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a"> 
-            <h1>Powered by FuzionApps</h1>
-          </div>
 
-        </div>
+                    
 
-        
+                    <div style="display:none;"  id="loading">
+                        <p class="title">Loading locations...</p>
+                    </div>
+
+                    <!-- note; h2, p ordering is different from original file -->
+                    <ul data-role  ="listview" data-inset = "true" id="locations" data-theme = "c">
+                        <li id = "div-diff1" class = "cell" ontouchstart = "return true;">
+                            <h2 class="cell-title" id="diff1" data-lat="" data-long="" ontouchstart="return true;"></h2>
+                            <p class="cell-subtitle" id="diff1-display"></p>
+                            <p class="cell-dist" id="diff1-dist"></p>
+                        </li>
+                        <li id = "div-diff2" class = "cell" ontouchstart = "return true;">
+                            <h2 class="cell-title" id="diff2" data-lat="" data-long="" ontouchstart="return true;"></h2>
+                            <p class="cell-subtitle" id="diff2-display"></p>
+                            <p class="cell-dist" id="diff2-dist"></p>
+                        </li>
+                        <li id = "div-diff3" class = "cell" ontouchstart = "return true;">
+                            <h2 class="cell-title" id="diff3" data-lat="" data-long="" ontouchstart="return true;"></h2>
+                            <p class="cell-subtitle" id="diff3-display"></p>
+                            <p class="cell-dist" id="diff3-dist"></p>
+                        </li>
+                    </ul>
+
+                    
+                </div>
+                <!--
+                <div class="menu">
+                    <button class="btn" id="message" data-current-page="pageone" data-page="pagecandidates">
+                        <img src="img/career_dev_icon_tips.png" alt="">
+                        Message
+                    </button>
+                    <button class="btn" 
+                            onclick="window.plugins.socialsharing.share('Rock the Vote! Check out CodeSelma.', null, null, 'http://www.fuzionapps.com/codeselma-apps-store/4588522876')">
+                        <img src="img/career_dev_icon_vision.png" alt="">
+                        Share
+                    </button>
+                </div> -->
+
+                <div class="footer" data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a">
+                    <div data-role = "navbar">
+                        <ul>
+                            <li><a href = "#pageone" data-icon = "home" class="ui-btn-active ui-state-persist">Home</a></li>
+                            <li><a href = "#pagecandidates" data-icon = "comment">Candidates</a></li>
+                            <li><a href = "#" onclick="window.plugins.socialsharing.share('Rock the Vote! Check out CodeSelma.', null, null, 'http://www.fuzionapps.com/codeselma-apps-store/4588522876')" data-icon = "action">Share</a></li>
+                       
+                        </ul>
+                    </div>
+                    <h1>Powered by FuzionApps</h1>
+                </div>
+            </div> <!-- end pageone -->
+
+
+
+
+<!-- pagetwo -->
+
+
+            <div data-role="page" id="pagetwo">
+
+                <div class="header">
+                    <div class="backbtn">
+                        <button class="headerbtn" id="pagetwobackbtn" data-current-page="pagetwo" data-page="pageone">
+                            Back
+                        </button>
+                     </div>
+                    <h1>CodeSelma</h1>
+                </div>
+
+                <div>
+                    <h2 id="candidate_name">Fredericka Phillips</h2>
+                    <p id="candidate_message" class="subtitle">Elect Fredericka Phillips for Harris County Judge</p>
+                </div>
+
+                 <div>
+                    <p style="text-align:center;">
+                        <img id="candidate_image" class="back-image" src="img/rickie_library_close_up.png" alt="">
+                    </p>
+                 </div>
+
+                 <div class="menubtngroup">
+                    <button class="menubtn" id="btnmessage" data-current-page="pagetwo" data-page="pagemessage">
+                        <img src="img/menu_icon_refer.png" alt="">
+                        Message (video)
+                    </button>
+                    <button class="menubtn" id="btnwebpage" href="http://www.frederickaphillipsforjudge.com">
+                        <img src="img/wages_icon_national.png" alt="">
+                        Web Site
+                    </button>
+                    <button class="menubtn" id="btnfacebook" href="https://www.facebook.com/fphillipsforjudge/">
+                        <img src="img/social_icon_facebook.png" alt="">
+                        Facebook
+                    </button>
+                    <button class="menubtn" id="btntwitter" href="https://twitter.com/frederickalaw">
+                        <img src="img/social_icon_twitter.png" alt="">
+                        Twitter
+                    </button>
+                 </div>
+
+                 <div class="footer" data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a">
+                    <div data-role = "navbar">
+                        <ul>
+                            <li><a href = "#pageone" data-icon = "home">Home</a></li>
+                            <li><a href = "#pagecandidates" data-icon = "comment">Candidates</a></li>
+                            <li><a href = "#" onclick="window.plugins.socialsharing.share('Rock the Vote! Check out CodeSelma.', null, null, 'http://www.fuzionapps.com/codeselma-apps-store/4588522876')" data-icon = "action">Share</a></li>
+                        </ul>
+                    </div>
+                    <h1>Powered by FuzionApps</h1>
+                </div>
+            </div> <!-- end pagetwo -->
+
+
+<!-- pagemessage -->
+
+
+            <div data-role="page" id="pagemessage">
+
+                <div class="header">
+                    <div class="backbtn">
+                        <button class="headerbtn" id="pagemessageback" data-current-page="pagemessage" data-page="pagetwo">
+                            Back
+                        </button>
+                     </div>
+                    <h1>CodeSelma</h1>
+                </div>
+
+                <div>
+                    <h2 id="pagemessage_candidate_name">Fredericka Phillips</h2>
+                    <p id="pagemessage_candidate_message" class="subtitle">Elect Fredericka Phillips for Harris County Judge</p>
+                </div>
+
+                 <div>
+                    <p style="text-align:center;">
+                        <video id="videomessage" width="320" height="240" controls>
+                          <source src="http://192.185.4.25/~laquitta/tally/videos/video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </p>
+                 </div>
+
+                 <div class="footer" data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a">
+                    <div data-role = "navbar">
+                        <ul>
+                            <li><a href = "#pageone" data-icon = "home">Home</a></li>
+                            <li><a href = "#pagecandidates" data-icon = "comment">Candidates</a></li>
+                            <li><a href = "#" onclick="window.plugins.socialsharing.share('Rock the Vote! Check out CodeSelma.', null, null, 'http://www.fuzionapps.com/codeselma-apps-store/4588522876')" data-icon = "action">Share</a></li>
+                        </ul>
+                    </div>
+                    <h1>Powered by FuzionApps</h1>
+                </div>
+
+            </div> <!-- end pagemessage -->
+
+
+<!-- pagecounty -->
+
+
+            <div data-role="page" id="pagecounty">
+
+                <div class="header">
+                    <div class="backbtn">
+                        <button class="headerbtn" id="pagecountyback" data-current-page="pagecounty" data-page="pageone">
+                            Back
+                        </button>
+                     </div>
+
+                    <h1>CodeSelma</h1>
+                </div>
+
+
+                <div>
+                    <h2>County</h2>
+                    <p class="subtitle">Choose your county...</p>
+                </div>
+
+                 <div>
+                    <ul id="counties">
+                    </ul>
+                 </div>
+
+                <div class="footer" data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a">
+                    <div data-role = "navbar">
+                        <ul>
+                            <li><a href = "#pageone" data-icon = "home">Home</a></li>
+                            <li><a href = "#pagecandidates" data-icon = "comment">Candidates</a></li>
+                            <li><a href = "#" onclick="window.plugins.socialsharing.share('Rock the Vote! Check out CodeSelma.', null, null, 'http://www.fuzionapps.com/codeselma-apps-store/4588522876')" data-icon = "action">Share</a></li>
+                        </ul>
+                    </div>
+                    <h1>Powered by FuzionApps</h1>
+                </div>
+            </div>  <!-- end pagecounty -->
+
+
+<!-- pagecandidates -->
+
+
+            <div data-role="page" id="pagecandidates" data-theme = "a" data-title = "Candidates">
+                <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed" >
+                    <!--<div class="backbtn">
+                        <button class="headerbtn" id="pagecandidatesback" data-current-page="pagecandidates" data-page="pageone">
+                            Back
+                        </button>
+                     </div>
+
+                    <h1>CodeSelma</h1> -->
+                    <a href = "#pageone" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext"></a>
+                    <h1 class = "header-blue">CODESELMA</h1>
+                </div>
+                <div data-role = "main" class = "ui-content" >
+     
+                    <h2>Candidates</h2>
+                    <p class="subtitle">Choose your candidate...</p>
+                    
+                    <hr>
+                     <div>
+                        <ul id="candidates">
+                        </ul>
+                     </div>
+                </div>
+
+                 <div class="footer" data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a">
+                    <div data-role = "navbar">
+                        <ul>
+                            <li><a href = "#pageone" data-icon = "home">Home</a></li>
+                            <li><a href = "#pagecandidates" data-icon = "comment" class="ui-btn-active ui-state-persist">Candidates</a></li>
+                            <li><a href = "#" onclick="window.plugins.socialsharing.share('Rock the Vote! Check out CodeSelma.', null, null, 'http://www.fuzionapps.com/codeselma-apps-store/4588522876')" data-icon = "action">Share</a></li>
+                        </ul>
+                    </div>
+                    <h1>Powered by FuzionApps</h1>
+                </div>
+            </div>  <!-- end pagecounty -->
+
+
+<!-- pageuserinfo -->
+
+
+            <div data-role="page" id="pageuserinfo">
+                <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed" >
+                    <a href = "#pageone" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext"></a>
+                    <h1 class = "header-blue">CODESELMA</h1>
+                    <a href = "#pageuserinfoedit" id = "pageuserinfoeditbtn" data-theme = "b">Edit</a>
+                </div>
+                <div data-role = "main" class = "ui-content" >
+
+                   <!-- <div class="header">
+                        <div class="backbtn">
+                            <button class="headerbtn" id="pageuserinfoback" data-current-page="pageuserinfo" data-page="pageone">
+                                Back
+                            </button>
+                         </div>
+                        <h1>CodeSelma</h1>
+                        <div class="rightbtn">
+                            <button class="headerbtn" id="pageuserinfoeditbtn" data-current-page="pageuserinfo" data-page="pageuserinfoedit">
+                                Edit
+                            </button>
+                        </div>
+                    </div> -->
+
+                    <div>
+                        <h2 id="user_name"></h2>
+                    </div>
+
+                    <hr>
+
+                     <!-- div>
+                        <p style="text-align:center;">
+                            <img id="user_image" class="back-image" src="empty.png" alt="">
+                        </p>
+                     </div -->
+
+                     <div class="menubtngroup">
+                        <div class="label-group">
+                            <p class="label">Email</p>
+                            <p id="user_email" class="value"></p>
+                        </div>
+
+                        <div class="label-group">
+                            <p class="label">Phone</p>
+                            <p id="user_phone" class="value"></p>
+                        </div>
+
+                        <div class="label-group">
+                            <p class="label">Facebook</p>
+                            <p id="user_facebook" class="value"></p>
+                        </div>
+
+                        <div class="label-group">
+                            <p class="label">Twitter</p>
+                            <p id="user_twitter" class="value"></p>
+                        </div>
+
+                     </div>
+
+
+                    <br>
+                </div>
+
+                <div class="footer" data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a">
+                    <div data-role = "navbar">
+                        <ul>
+                            <li><a href = "#pageone" data-icon = "home">Home</a></li>
+                            <li><a href = "#pagecandidates" data-icon = "comment">Candidates</a></li>
+                            <li><a href = "#" onclick="window.plugins.socialsharing.share('Rock the Vote! Check out CodeSelma.', null, null, 'http://www.fuzionapps.com/codeselma-apps-store/4588522876')" data-icon = "action">Share</a></li>
+                        </ul>
+                    </div>
+                    <h1>Powered by FuzionApps</h1>
+                </div>
+            </div> <!-- end pageuserinfo -->
+
+
+<!-- pageuserinfoedit -->
+
+
+            <div data-role="page" id="pageuserinfoedit">
+                <div data-role="header"  data-position="fixed" > <!--data-theme = "a" data-id = "header1"-->
+                    <a href = "#pageuserinfo" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext"></a>
+                    <h1 class = "header-blue">CODESELMA</h1>
+                    <a href = "#pageuserinfo" id = "pageuserinfoeditsave" data-theme = "b">Save</a>
+                </div>
+
+                 <!-- div>
+                    <p style="text-align:center;">
+                        <img id="user_image" class="back-image" src="empty.png" alt="">
+                    </p>
+                 </div -->
+                 <div data-role = "main" class = "ui-content" >
+
+                     <div class="menubtngroup">
+                        <div class="label-group">
+                            <p class="label">Name</p>
+                            <input class="value" type="text" name="firstname" id="user_name_edit" data-theme = "c"><br>
+                        </div>
+                        <div class="label-group">
+                            <p class="label">Email</p>
+                            <input class="value" type="email" name="email" id="user_email_edit" data-theme = "c"><br>
+                        </div>
+                        <div class="label-group">
+                            <p class="label">Phone</p>
+                            <input class="value" type="tel" name="phone" id="user_phone_edit" data-theme = "c"><br>
+                        </div>
+
+                        <div class="label-group">
+                            <p class="label">Facebook</p>
+                            <input class="value" type="text" name="facebook" id="user_facebook_edit" data-theme = "c"><br>
+                        </div>
+
+                        <div class="label-group">
+                            <p class="label">Twitter</p>
+                            <input class="value" type="text" name="twitter" id="user_twitter_edit" data-theme = "c"><br>
+                        </div>
+
+                     </div>
+                    
+                    <br>
+                </div>
+
+                <div class="footer" data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a">
+                    <div data-role = "navbar">
+                        <ul>
+                            <li><a href = "#pageone" data-icon = "home">Home</a></li>
+                            <li><a href = "#pagecandidates" data-icon = "comment">Candidates</a></li>
+                            <li><a href = "#" onclick="window.plugins.socialsharing.share('Rock the Vote! Check out CodeSelma.', null, null, 'http://www.fuzionapps.com/codeselma-apps-store/4588522876')" data-icon = "action">Share</a></li>
+                        </ul>
+                    </div>
+                    <h1>Powered by FuzionApps</h1>
+                </div>
+            </div> <!-- end pageuserinfo -->
+
+      <!--  </div> --><!-- end app -->
+
         <script type="text/javascript" src="cordova.js"></script>
+       <!-- <script type="text/javascript" src="js/jquery/jquery-1.11.3.js"></script>
+        <script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
+        <script type="text/javascript" src="jquery.mobile/jquery.mobile-1.4.5.js"></script-->
+        <script type="text/javascript" src="js/original_index.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+
+        <script type="text/javascript"></script>
     </body>
 </html>
