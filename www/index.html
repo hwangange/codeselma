@@ -158,44 +158,52 @@
 
             <div data-role="page" id="pagetwo">
 
-                <div class="header">
+                <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed">
+                    <a href = "#pageone" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext"></a>
+                    <h1 class = "header-blue">CODESELMA</h1>
+                </div>
+
+               <!-- <div class="header">
                     <div class="backbtn">
                         <button class="headerbtn" id="pagetwobackbtn" data-current-page="pagetwo" data-page="pageone">
                             Back
                         </button>
                      </div>
                     <h1>CodeSelma</h1>
+                </div> -->
+
+                <div data-role = "main" class = "ui-content">
+
+                    <div>
+                        <h2 id="candidate_name">Fredericka Phillips</h2>
+                        <p id="candidate_message" class="subtitle">Elect Fredericka Phillips for Harris County Judge</p>
+                    </div>
+
+                     <div>
+                        <p style="text-align:center;">
+                            <img id="candidate_image" class="back-image" src="img/rickie_library_close_up.png" alt="">
+                        </p>
+                     </div>
+
+                     <div class="menubtngroup">
+                        <button class="menubtn" id="btnmessage" data-current-page="pagetwo" data-page="pagemessage">
+                            <img src="img/menu_icon_refer.png" alt="">
+                            Message (video)
+                        </button>
+                        <button class="menubtn" id="btnwebpage" href="http://www.frederickaphillipsforjudge.com">
+                            <img src="img/wages_icon_national.png" alt="">
+                            Web Site
+                        </button>
+                        <button class="menubtn" id="btnfacebook" href="https://www.facebook.com/fphillipsforjudge/">
+                            <img src="img/social_icon_facebook.png" alt="">
+                            Facebook
+                        </button>
+                        <button class="menubtn" id="btntwitter" href="https://twitter.com/frederickalaw">
+                            <img src="img/social_icon_twitter.png" alt="">
+                            Twitter
+                        </button>
+                     </div>
                 </div>
-
-                <div>
-                    <h2 id="candidate_name">Fredericka Phillips</h2>
-                    <p id="candidate_message" class="subtitle">Elect Fredericka Phillips for Harris County Judge</p>
-                </div>
-
-                 <div>
-                    <p style="text-align:center;">
-                        <img id="candidate_image" class="back-image" src="img/rickie_library_close_up.png" alt="">
-                    </p>
-                 </div>
-
-                 <div class="menubtngroup">
-                    <button class="menubtn" id="btnmessage" data-current-page="pagetwo" data-page="pagemessage">
-                        <img src="img/menu_icon_refer.png" alt="">
-                        Message (video)
-                    </button>
-                    <button class="menubtn" id="btnwebpage" href="http://www.frederickaphillipsforjudge.com">
-                        <img src="img/wages_icon_national.png" alt="">
-                        Web Site
-                    </button>
-                    <button class="menubtn" id="btnfacebook" href="https://www.facebook.com/fphillipsforjudge/">
-                        <img src="img/social_icon_facebook.png" alt="">
-                        Facebook
-                    </button>
-                    <button class="menubtn" id="btntwitter" href="https://twitter.com/frederickalaw">
-                        <img src="img/social_icon_twitter.png" alt="">
-                        Twitter
-                    </button>
-                 </div>
 
                  <div class="footer" data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a">
                     <div data-role = "navbar">
@@ -215,28 +223,38 @@
 
             <div data-role="page" id="pagemessage">
 
-                <div class="header">
+               <!-- <div class="header">
                     <div class="backbtn">
                         <button class="headerbtn" id="pagemessageback" data-current-page="pagemessage" data-page="pagetwo">
                             Back
                         </button>
                      </div>
                     <h1>CodeSelma</h1>
+                </div> -->
+
+                <div data-role="header" data-theme = "a" data-id = "header1" data-position="fixed">
+                    <a href = "#pagetwo" id = "backButton" class="ui-btn ui-shadow ui-corner-all ui-icon-arrow-l ui-btn-icon-notext"></a>
+                    <h1 class = "header-blue">CODESELMA</h1>
                 </div>
 
-                <div>
-                    <h2 id="pagemessage_candidate_name">Fredericka Phillips</h2>
-                    <p id="pagemessage_candidate_message" class="subtitle">Elect Fredericka Phillips for Harris County Judge</p>
-                </div>
+                <div data-role = "main" class = "ui-content">
 
-                 <div>
-                    <p style="text-align:center;">
-                        <video id="videomessage" width="320" height="240" controls>
-                          <source src="http://192.185.4.25/~laquitta/tally/videos/video.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </p>
-                 </div>
+                    <div>
+                        <h2 id="pagemessage_candidate_name">Fredericka Phillips</h2>
+                        <p id="pagemessage_candidate_message" class="subtitle">Elect Fredericka Phillips for Harris County Judge</p>
+                    </div>
+
+
+
+                     <div>
+                        <p style="text-align:center;">
+                            <video id="videomessage" width="320" height="240" controls>
+                              <source src="http://192.185.4.25/~laquitta/tally/videos/video.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </p>
+                     </div>
+                </div>
 
                  <div class="footer" data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a">
                     <div data-role = "navbar">
@@ -267,16 +285,17 @@
                     <h1>CodeSelma</h1>
                 </div>
 
+                <div data-role = "main" class = "ui-content">
+                    <div>
+                        <h2>County</h2>
+                        <p class="subtitle">Choose your county...</p>
+                    </div>
 
-                <div>
-                    <h2>County</h2>
-                    <p class="subtitle">Choose your county...</p>
+                     <div>
+                        <ul id="counties">
+                        </ul>
+                     </div>
                 </div>
-
-                 <div>
-                    <ul id="counties">
-                    </ul>
-                 </div>
 
                 <div class="footer" data-role="footer" data-id = "footer1" data-position="fixed" data-theme = "a">
                     <div data-role = "navbar">
